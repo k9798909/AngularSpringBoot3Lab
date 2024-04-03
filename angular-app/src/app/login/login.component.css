@@ -1,0 +1,32 @@
+.loginCard {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin: auto auto;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.mat-mdc-card-title {
+    margin-bottom: 10px;
+}
+
+.mat-mdc-form-field {
+    width: 300px;
+}
+
+.error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+}
+
+.buttonGroup {
+    display: flex;
+    align-items: center;
+}
+
+.buttonGroup button {
+    width: 100%;
+}

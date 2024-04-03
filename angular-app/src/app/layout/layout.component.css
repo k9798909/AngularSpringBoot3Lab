@@ -1,0 +1,36 @@
+.toolbar {
+  height: 10%;
+}
+
+.sidenav-container {
+  min-height: 90%;
+}
+
+.sidenav {
+  width: 18%;
+}
+
+.mdc-button.nav-btn {
+  width: 100%;
+  justify-content: left;
+}
+
+.logout {
+  width: 100%;
+  justify-content: center;
+}
+
+.nav-btn-group {
+  overflow-y: auto;
+  max-height: 90%;
+}
+
+.nav-list {
+  height: 99%;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}

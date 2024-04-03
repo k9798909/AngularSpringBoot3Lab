@@ -1,0 +1,29 @@
+<mat-toolbar class="toolbar" color="primary">
+  <span>my-application</span>
+</mat-toolbar>
+<mat-card class="loginCard">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <p>
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>帳號</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>密碼</mat-label>
+          <input matInput type="password" />
+        </mat-form-field>
+      </p>
+      <!-- <p *ngIf="error" class="error">
+        {{ error }}
+      </p> -->
+
+      <div class="buttonGroup">
+        <button type="button" mat-button>登入</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

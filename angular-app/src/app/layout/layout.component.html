@@ -1,0 +1,32 @@
+<mat-toolbar class="toolbar" color="primary">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+  >
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>my-application</span>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" opened="true" mode="side">
+    <mat-nav-list class="nav-list">
+      <div class="nav-btn-group">
+        <a class="nav-btn" mat-list-item href="#">帳號管理</a>
+        <a class="nav-btn" mat-list-item href="#">待辦事項</a>
+      </div>
+      <a
+        class="logout"
+        mat-button
+        routerLink="/login"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >登出</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
