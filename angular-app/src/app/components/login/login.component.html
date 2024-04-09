@@ -4,17 +4,17 @@
 <mat-card class="loginCard">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
-    <form>
+    <form action="http://localhost:8080/login" method="post">
       <p>
         <mat-form-field appearance="outline" color="primary">
           <mat-label>帳號</mat-label>
-          <input matInput />
+          <input name="username" matInput />
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline" color="primary">
           <mat-label>密碼</mat-label>
-          <input matInput type="password" />
+          <input password="password" matInput type="password" />
         </mat-form-field>
       </p>
       <!-- <p *ngIf="error" class="error">
@@ -22,7 +22,7 @@
       </p> -->
 
       <div class="buttonGroup">
-        <button type="button" mat-button>登入</button>
+        <button type="submit" mat-button>登入</button>
       </div>
     </form>
   </mat-card-content>

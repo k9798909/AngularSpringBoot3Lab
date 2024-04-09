@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: apiService
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    username: users
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+jwt:
+  secretKey: SECRETKEYSECRSECRETKEYSECRETKEYSECRETKEYETSSECRETKEYSECRETKEYSECRETKEYECRETKEYSECRETKEYSECRETKEYKEYSECRETKEY
