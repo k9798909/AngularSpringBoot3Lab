@@ -1,0 +1,7 @@
+{   
+    "//_commemt":"與vue3 proxy不同後端一定要有api",
+    "/api": {
+      "target": "http://localhost:8083",
+      "secure": false
+    }
+}

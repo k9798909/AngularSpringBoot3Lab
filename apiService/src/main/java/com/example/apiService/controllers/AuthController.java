@@ -22,10 +22,10 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private JwtTokenUtils JwtTokenUtils;
+    private JwtTokenUtils jwtTokenUtils;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginReq req) {
+    public ResponseEntity<LoginRes> login(@RequestBody LoginReq req) {
         try {
             // 用ProviderManager進行認證
             Authentication authenticate = authenticationManager
@@ -38,8 +38,8 @@ public class AuthController {
             return ResponseEntity.ok()
                     .header(
                             HttpHeaders.AUTHORIZATION,
-                            JwtTokenUtils.generateToken(users.getUsername()))
-                    .body("成功");
+                            jwtTokenUtils.generateToken(users.getUsername()))
+                    .body(new LoginRes(users.getUsername()));
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -53,4 +53,6 @@ public class AuthController {
     public record LoginReq(String username, String password) {
     }
 
+    public record LoginRes(String username) {
+    }
 }

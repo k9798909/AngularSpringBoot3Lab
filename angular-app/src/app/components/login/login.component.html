@@ -4,25 +4,27 @@
 <mat-card class="loginCard">
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
-    <form action="http://localhost:8080/login" method="post">
+    <form [formGroup]="loginForm" novalidate >
       <p>
         <mat-form-field appearance="outline" color="primary">
           <mat-label>帳號</mat-label>
-          <input name="username" matInput />
+          <input formControlName="username" matInput (blur)="updateErrorMessage()"/>
+          @if (username.invalid) {
+            <mat-error>{{loginFormError.username}}</mat-error>
+          }
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline" color="primary">
           <mat-label>密碼</mat-label>
-          <input password="password" matInput type="password" />
+          <input formControlName="password" password="password" matInput type="password" (blur)="updateErrorMessage()"/>
+          @if (password.invalid) {
+            <mat-error>{{loginFormError.password}}</mat-error>
+          }
         </mat-form-field>
       </p>
-      <!-- <p *ngIf="error" class="error">
-        {{ error }}
-      </p> -->
-
       <div class="buttonGroup">
-        <button type="submit" mat-button>登入</button>
+        <button type="button" mat-button (click)="login()">登入</button>
       </div>
     </form>
   </mat-card-content>

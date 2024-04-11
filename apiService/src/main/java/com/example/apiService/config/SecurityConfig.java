@@ -39,7 +39,8 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             // UsernamePasswordAuthenticationFilter會在使用formlogin時註冊，沒有註冊也沒關係順序會在FilterOrderRegistration定義
             .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
-            .exceptionHandling(exceptionHandlingCustomizer());
+            .exceptionHandling(exceptionHandlingCustomizer())
+            ;
         return http.build();
     }
 

@@ -1,3 +1,7 @@
+server:
+  servlet:
+    context-path: /api
+  port: 8083
 spring:
   application:
     name: apiService
