@@ -18,7 +18,12 @@ const canActivateTeam: CanActivateFn = (
 
 export const routes: Routes = [
   { title: '登入頁面', path: 'login', component: LoginComponent },
-  { title: '登入頁面', path: '', component: LoginComponent },
+  {
+    title: '首頁',
+    path: '',
+    component: LayoutComponent,
+    canActivate: [canActivateTeam],
+  },
   {
     title: '首頁',
     path: 'angular-app',

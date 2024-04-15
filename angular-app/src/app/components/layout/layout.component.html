@@ -16,13 +16,11 @@
         <a class="nav-btn" mat-list-item href="#">帳號管理</a>
         <a class="nav-btn" mat-list-item href="#">待辦事項</a>
       </div>
-      <a
+      <button
         class="logout"
-        mat-button
-        routerLink="/login"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >登出</a
+        mat-flat-button
+        (click) = "logout()"
+        >登出</button
       >
     </mat-nav-list>
   </mat-sidenav>

@@ -16,10 +16,10 @@
 }
 
 .error {
-    padding: 16px;
+    padding-bottom: 25px;
     width: 300px;
-    color: white;
-    background-color: red;
+    color: red;
+    background-color: white;
 }
 
 .buttonGroup {

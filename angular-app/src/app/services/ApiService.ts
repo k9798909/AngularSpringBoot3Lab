@@ -48,5 +48,8 @@ export class ApiService {
     );
   }
 
+  get tokenStorage(): Storage {
+    return sessionStorage;
+  }
   // Add methods for other HTTP verbs like put, patch, delete, etc.
 }

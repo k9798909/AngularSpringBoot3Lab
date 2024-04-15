@@ -11,9 +11,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/AuthService';
 import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
   standalone: true,
   imports: [
     MatToolbarModule,
@@ -23,11 +27,10 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -48,7 +51,18 @@ export class LoginComponent {
       this.updateErrorMessage();
       return;
     }
-    this.authService.login(this.loginForm.value);
+    this.authService
+      .login(this.loginForm.value)
+      .then(() => {
+        this.router.navigate(['/angular-app']);
+      })
+      .catch((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.loginError();
+          return;
+        }
+        console.error(error);
+      });
   }
 
   updateErrorMessage() {
@@ -61,6 +75,12 @@ export class LoginComponent {
     }
 
     this.username;
+  }
+
+  loginError() {
+    this.password.setErrors({ invalid: true });
+    this.username.setErrors({ invalid: true });
+    this.loginFormError.password = '帳號或密碼錯誤';
   }
 
   get username() {

@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
 import { ApiService } from './ApiService';
+import { HttpResponse } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -9,20 +10,24 @@ export class AuthService {
 
   constructor() {}
 
-  async login(loginDto: {
-    username: string;
-    password: string;
-  }): Promise<void> {
-    const res = await this.apiService.post('login', loginDto);
-    console.log(res.headers.get('Authorization'));
-    localStorage.setItem('id_token', res.headers.get('Authorization')!);
+  async login(loginDto: { username: string; password: string }): Promise<void> {
+    let res: HttpResponse<string> = await this.apiService.post<string>('login',loginDto);
+    const token = res.headers.get('Authorization')!;
+    this.apiService.tokenStorage.setItem('token', token);
+  }
+
+  logout() {
+    this.apiService.tokenStorage.removeItem('token');
+    return;
   }
 
   canActivate(): boolean | UrlTree {
-    if (false) {
+    if (this.apiService.tokenStorage.getItem('token')) {
       return true;
     }
 
     return this.router.parseUrl('/login');
   }
+
+
 }
