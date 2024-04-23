@@ -15,8 +15,15 @@ CREATE INDEX username_index ON users (username);
 INSERT INTO users (username, password, name, birthday, email, address)
 VALUES ('test', '{bcrypt}$2a$10$QZmTXJBuZZ9G5X5zsNdlA.iiGCfIgB.ooEv7eYwWJBIi61vYFq05G', 'John Doe', '1990-01-15', 'john.doe@example.com', '123 Main St');
 
-
-
+CREATE TABLE Todo (
+    id SERIAL PRIMARY KEY,
+    task VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed BOOLEAN DEFAULT FALSE,
+    completed_at TIMESTAMP,
+    deleted BOOLEAN DEFAULT FALSE,
+    deleted_at TIMESTAMP
+);
 
 
 

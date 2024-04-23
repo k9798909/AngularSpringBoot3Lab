@@ -1,3 +1,4 @@
 1. ng new my-first-project 創建新專案
 2. ng serve 啟動專案
 3. ng generate component my-component 創建component
+4. ng generate service todo 創建service

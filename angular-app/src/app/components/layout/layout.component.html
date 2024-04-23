@@ -13,18 +13,21 @@
   <mat-sidenav #drawer class="sidenav" opened="true" mode="side">
     <mat-nav-list class="nav-list">
       <div class="nav-btn-group">
-        <a class="nav-btn" mat-list-item href="#">帳號管理</a>
-        <a class="nav-btn" mat-list-item href="#">待辦事項</a>
+        <a class="nav-btn" mat-list-item routerLink="/angular-app/todo-list">待辦事項</a>
       </div>
-      <button
-        class="logout"
-        mat-flat-button
-        (click) = "logout()"
-        >登出</button
-      >
+      <div class="logout-area">
+        <button
+          class="logout"
+          color="primary"
+          mat-raised-button
+          (click)="logout()"
+        >
+          登出
+        </button>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet />
+  <mat-sidenav-content class="content">
+    <router-outlet/>
   </mat-sidenav-content>
 </mat-sidenav-container>

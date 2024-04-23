@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Router, UrlTree } from '@angular/router';
-import { ApiService } from './ApiService';
+import { ApiService } from './api.service';
 import { HttpResponse } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -21,13 +21,15 @@ export class AuthService {
     return;
   }
 
-  canActivate(): boolean | UrlTree {
-    if (this.apiService.tokenStorage.getItem('token')) {
-      return true;
-    }
-
-    return this.router.parseUrl('/login');
+  canActivate(): Promise<boolean | UrlTree> {
+    return this.apiService.post<void>('validate',{})
+      .then(() => {
+          return true;
+      })
+      .catch(e => {
+        console.error('Invalid token',e);
+        return this.router.parseUrl('/login');
+      });
   }
-
 
 }

@@ -15,11 +15,15 @@
   justify-content: left;
 }
 
-.logout {
+.logout-area {
+  display: flex;
+  align-items: center;
   width: 100%;
-  justify-content: center;
-  border-top: 1px solid #e0e0e0;
-  border-radius: 0px;
+}
+
+.logout {
+  width: 95%;
+  margin: auto auto;
 }
 
 .nav-btn-group {
@@ -35,4 +39,9 @@
   flex-direction: column;
   justify-content: space-between;
 
+}
+
+.content {
+  background-color: white;
+  min-height: 90vh;
 }

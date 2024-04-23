@@ -13,7 +13,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -45,9 +44,9 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("hello");
+    @PostMapping("/validate")
+    public ResponseEntity<Void> validate() {
+        return ResponseEntity.ok().build();
     }
 
     public record LoginReq(String username, String password) {
